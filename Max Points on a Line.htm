@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html class=" "><head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# githubog: http://ogp.me/ns/fb/githubog#">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Max Points on a Line</title>
+
+  <meta content="authenticity_token" name="csrf-param">
+<meta content="d/qAmeHoVNTVQd3W/Rdq4LCSb82CinN+ZJjydyBuuvQ=" name="csrf-token">
+  <meta name="viewport" content="width=960">
+
+
+    <link type="text/plain" rel="author" href="https://github.com/humans.txt">
+    <meta content="gist" name="octolytics-app-id"><meta content="collector.githubapp.com" name="octolytics-host"><meta content="collector-cdn.github.com" name="octolytics-script-host"><meta content="A83F9414:6B88:E473BA5:536EDA4E" name="octolytics-dimension-request_id"><meta content="7413132" name="octolytics-actor-id"><meta content="qingchen021" name="octolytics-actor-login"><meta content="85609f63d03ea0ab000ceca5d851dfe3375fca4ea582eeb938036eed2f6567f0" name="octolytics-actor-hash">
+
+  <link href="Max%20Points%20on%20a%20Line_files/application-23b5f1f860627d975f69358b680a6c1c.css" media="screen, print" rel="stylesheet">
+  <script src="Max%20Points%20on%20a%20Line_files/analytics.js" async=""></script><script src="Max%20Points%20on%20a%20Line_files/application-a6f0f5317ef6e09be9c1eac645441ab6.js"></script>
+
+  
+<script src="Max%20Points%20on%20a%20Line_files/api.js"></script><meta data-pjax-transient="true" name="robots" content="noindex, nofollow"><meta data-pjax-transient="true" name="referrer" content="never"></head>
+
+<body class="logged_in " data-plan="">
+
+  <div id="wrapper">
+    
+
+    <div id="header" class="header header-logged-in">
+      <div class="container clearfix">
+        <a class="header-logo-wordmark" href="https://gist.github.com/">
+          <span class="octicon octicon-logo-github"></span>
+          <span class="octicon-logo octicon-logo-gist"></span>
+        </a>
+
+        <div class="divider-vertical"></div>
+        <div class="topsearch">
+  <form id="top_search_form" action="/search" data-pjax-remote="push" accept-charset="UTF-8">
+    <div class="search">
+      <input class="search js-search js-navigation-enable js-quick-search" name="q" placeholder="Search…" data-hotkey="/" autocomplete="off" autocorrect="off" type="text">
+
+      <div class="search-results js-search-results js-navigation-container"></div>
+    </div>
+    <div class="divider-vertical"></div>
+  </form>
+  <ul class="top-nav">
+    <li class="explore"><a href="https://gist.github.com/discover">All Gists</a></li>
+  </ul>
+</div>
+
+        <ul id="user-links">
+  <li>
+    <a href="https://gist.github.com/qingchen021" class="name">
+      <img src="Max%20Points%20on%20a%20Line_files/7413132.png" height="20" width="20"> qingchen021
+    </a>
+  </li>
+  <li>
+    <a href="https://gist.github.com/" id="new_gist" class="tooltipped tooltipped-s" aria-label="Create a New Gist">
+      <span class="octicon octicon-gist-new"></span>
+    </a>
+  </li>
+  <li>
+    <a href="https://github.com/" class="tooltipped tooltipped-s" aria-label="Go to GitHub" data-skip-pjax="">
+      <span class="octicon octicon-octoface"></span>
+    </a>
+  </li>
+  <li>
+    <form action="/logout" method="post">
+      <input name="authenticity_token" value="d/qAmeHoVNTVQd3W/Rdq4LCSb82CinN+ZJjydyBuuvQ=" type="hidden">
+      <button class="logout-button tooltipped tooltipped-s" id="logout" type="submit" aria-label="Log Out">
+        <span class="octicon octicon-log-out"></span>
+      </button>
+    </form>
+  </li>
+</ul>
+
+      </div>
+    </div>
+
+    <div class="site-content" id="js-pjax-container" data-pjax-container="">
+  <div class="vis-secret site-container js-site-container" data-url="/qingchen021/78d06b20a519aacdbec8">
+  
+  
+
+<meta content="false" name="octolytics-dimension-public"><meta content="11370294" name="octolytics-dimension-gist_id"><meta content="78d06b20a519aacdbec8" name="octolytics-dimension-gist_name"><meta content="false" name="octolytics-dimension-anonymous"><meta content="7413132" name="octolytics-dimension-owner_id"><meta content="qingchen021" name="octolytics-dimension-owner_login"><meta content="false" name="octolytics-dimension-forked">
+
+<div class="pagehead repohead">
+  <div class="container">
+    <div class="title-actions-bar">
+      <ul class="pagehead-actions">
+            <li>
+              <div class="gist-advanced-options select-menu js-menu-container js-select-menu">
+
+                <span class="minibutton select-menu-button js-menu-target">
+                  <span class="octicon octicon-gear"></span>
+                </span>
+
+                <div class="select-menu-modal-holder js-menu-content js-navigation-container js-select-menu-pane">
+                  <div class="select-menu-modal">
+                    <div class="select-menu-header">
+                      <span class="select-menu-title">Advanced options</span>
+                      <span class="octicon octicon-remove-close js-menu-close"></span>
+                    </div> <!-- /.select-menu-header -->
+
+                    <div class="select-menu-list">
+
+                      <div class="select-menu-item js-navigation-item">
+                        <div class="select-menu-item-text js-navigation-open">
+                          <a href="https://gist.github.com/qingchen021/78d06b20a519aacdbec8/report" data-method="post" data-skip-pjax="">Report as Abuse</a>
+                        </div>
+                      </div> <!-- /.select-menu-item -->
+
+                    </div> <!-- /.select-menu-list -->
+
+                  </div> <!-- /.select-menu-modal -->
+                </div> <!-- /.select-menu-modal-holder -->
+              </div> <!-- /.select-menu -->
+            </li>
+          <li>
+            <a href="https://gist.github.com/qingchen021/78d06b20a519aacdbec8/edit" class="minibutton" rel="nofollow"><span class="octicon octicon-pencil"></span>Edit</a>
+          </li>
+          <li>
+            <form action="/qingchen021/78d06b20a519aacdbec8" data-pjax-remote="push" data-remote-submit="" method="post" enctype="multipart/form-data" accept-charset="UTF-8">
+              <input name="_method" value="delete" type="hidden">
+              <input name="authenticity_token" value="d/qAmeHoVNTVQd3W/Rdq4LCSb82CinN+ZJjydyBuuvQ=" type="hidden">
+              <button class="minibutton danger js-delete-button" type="submit"><span class="octicon octicon-remove-close"></span>Delete</button>
+            </form>
+          </li>
+          <li>
+              <form action="/qingchen021/78d06b20a519aacdbec8/star" data-pjax-remote="replace" method="post" accept-charset="UTF-8">
+                <input name="authenticity_token" value="d/qAmeHoVNTVQd3W/Rdq4LCSb82CinN+ZJjydyBuuvQ=" type="hidden">
+                <button class="minibutton with-count" type="submit"><span class="octicon octicon-star"></span>Star</button>
+                  <span class="social-count">0</span>
+              </form>
+          </li>
+
+
+      </ul>
+      <h1 itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" class="entry-title secret">
+        <span class="repo-label"><span class="tooltipped tooltipped-se" aria-label="Secret gists are hidden from search engines but visible to anyone you give the URL.">secret</span></span>
+        <span class="mega-octicon octicon-gist-secret"></span>
+        <div class="meta">
+          <div class="gist-author">
+            <img src="Max%20Points%20on%20a%20Line_files/7413132.png" height="26" width="26">
+            <span class="author vcard">
+                <span itemprop="title"><a href="https://gist.github.com/qingchen021">qingchen021</a></span>
+            </span> /
+            <strong><a href="https://gist.github.com/qingchen021/78d06b20a519aacdbec8" class="js-current-repository">Max Points on a Line.cpp</a></strong>
+          </div>
+          <div class="gist-timestamp">
+              <span class="datetime">Last active <time class="js-relative-date" title="2014-04-28T12:26:58Z" datetime="2014-04-28T12:26:58Z">13 days ago</time></span>
+          </div>
+      </div></h1>
+    </div>
+
+  </div>
+</div>
+
+
+  <div class="gist-description container">
+    <p></p><div>Max Points on a Line</div><p></p>
+  </div>
+<div class="gist container js-gist-container" data-version="d64f54d060f378eca529ace09b6f4055ae9a1ce0" data-created="false" data-updated="false">
+
+    <div class="root-pane">
+  <div class="menu-container">
+    <ul class="menu gisttabs">
+      <li>
+        <a href="https://gist.github.com/qingchen021/78d06b20a519aacdbec8" class="selected">
+          Gist Detail
+        </a>
+      </li>
+
+        <li class="revision-count">
+          <a href="https://gist.github.com/qingchen021/78d06b20a519aacdbec8/revisions">
+            Revisions
+            <span class="counter">2</span>
+          </a>
+        </li>
+
+
+    </ul>
+  </div>
+
+  <ul class="export-references">
+    <li>
+      <a href="https://gist.github.com/qingchen021/78d06b20a519aacdbec8/download" class="minibutton" data-skip-pjax="true" rel="nofollow"><span class="octicon octicon-cloud-download"></span>Download Gist</a>
+    </li>
+    <li>
+      <label for="url-field"><strong>Clone</strong> this gist</label>
+      <input readonly="readonly" spellcheck="false" class="url-field js-url-field js-copy-toggle" name="url-field" value="https://gist.github.com/78d06b20a519aacdbec8.git" type="text">
+    </li>
+    <li>
+      <label for="embed-field"><strong>Embed</strong> this gist</label>
+      <input readonly="readonly" spellcheck="false" class="url-field js-url-field" name="embed-field" value="&lt;script src=&quot;https://gist.github.com/qingchen021/78d06b20a519aacdbec8.js&quot;&gt;&lt;/script&gt;" type="text">
+    </li>
+    <li>
+      <label for="link-field"><strong>Link to</strong> this gist</label>
+      <input readonly="readonly" spellcheck="false" class="url-field js-url-field" name="link-field" value="https://gist.github.com/qingchen021/78d06b20a519aacdbec8" type="text">
+    </li>
+  </ul>
+</div>
+
+
+  <div class="column files">
+        <div id="file-max-points-on-a-line-cpp" class="bubble">
+          <div class="file-box ">
+            <div class="meta">
+              <div class="file-info">
+                <span class="file-type-icon"><span class="octicon octicon-gist"></span></span>
+                <strong class="file-name js-selectable-text">Max Points on a Line.cpp</strong>
+              </div>
+              <div class="file-actions">
+                <span class="file-language">C++</span>
+                <ul class="button-group">
+                  <li><a aria-label="Permalink" href="#file-max-points-on-a-line-cpp" class="file-actions-button tooltipped tooltipped-s permalink"><span class="octicon octicon-link"></span></a></li>
+                  <li><a aria-label="View Raw" href="https://gist.github.com/qingchen021/78d06b20a519aacdbec8/raw/bc5c90baa38206ea3adce46b9ccf9a38e4e9b61f/Max%20Points%20on%20a%20Line.cpp" data-skip-pjax="" class="file-actions-button tooltipped tooltipped-s raw-url js-view-raw"><span class="octicon octicon-code"></span></a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="suppressed">
+              <a class="js-show-suppressed-file">File suppressed. Click to show.</a>
+            </div>
+            
+
+
+
+    <div class="file-data">
+      <table class="lines highlight" cellpadding="0" cellspacing="0">
+        <tbody><tr>
+          <td class="line-numbers">
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L1" rel="file-max-points-on-a-line-cpp-L1">1</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L2" rel="file-max-points-on-a-line-cpp-L2">2</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L3" rel="file-max-points-on-a-line-cpp-L3">3</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L4" rel="file-max-points-on-a-line-cpp-L4">4</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L5" rel="file-max-points-on-a-line-cpp-L5">5</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L6" rel="file-max-points-on-a-line-cpp-L6">6</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L7" rel="file-max-points-on-a-line-cpp-L7">7</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L8" rel="file-max-points-on-a-line-cpp-L8">8</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L9" rel="file-max-points-on-a-line-cpp-L9">9</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L10" rel="file-max-points-on-a-line-cpp-L10">10</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L11" rel="file-max-points-on-a-line-cpp-L11">11</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L12" rel="file-max-points-on-a-line-cpp-L12">12</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L13" rel="file-max-points-on-a-line-cpp-L13">13</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L14" rel="file-max-points-on-a-line-cpp-L14">14</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L15" rel="file-max-points-on-a-line-cpp-L15">15</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L16" rel="file-max-points-on-a-line-cpp-L16">16</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L17" rel="file-max-points-on-a-line-cpp-L17">17</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L18" rel="file-max-points-on-a-line-cpp-L18">18</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L19" rel="file-max-points-on-a-line-cpp-L19">19</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L20" rel="file-max-points-on-a-line-cpp-L20">20</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L21" rel="file-max-points-on-a-line-cpp-L21">21</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L22" rel="file-max-points-on-a-line-cpp-L22">22</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L23" rel="file-max-points-on-a-line-cpp-L23">23</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L24" rel="file-max-points-on-a-line-cpp-L24">24</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L25" rel="file-max-points-on-a-line-cpp-L25">25</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L26" rel="file-max-points-on-a-line-cpp-L26">26</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L27" rel="file-max-points-on-a-line-cpp-L27">27</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L28" rel="file-max-points-on-a-line-cpp-L28">28</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L29" rel="file-max-points-on-a-line-cpp-L29">29</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L30" rel="file-max-points-on-a-line-cpp-L30">30</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L31" rel="file-max-points-on-a-line-cpp-L31">31</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L32" rel="file-max-points-on-a-line-cpp-L32">32</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L33" rel="file-max-points-on-a-line-cpp-L33">33</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L34" rel="file-max-points-on-a-line-cpp-L34">34</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L35" rel="file-max-points-on-a-line-cpp-L35">35</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L36" rel="file-max-points-on-a-line-cpp-L36">36</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L37" rel="file-max-points-on-a-line-cpp-L37">37</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L38" rel="file-max-points-on-a-line-cpp-L38">38</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L39" rel="file-max-points-on-a-line-cpp-L39">39</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L40" rel="file-max-points-on-a-line-cpp-L40">40</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L41" rel="file-max-points-on-a-line-cpp-L41">41</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L42" rel="file-max-points-on-a-line-cpp-L42">42</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L43" rel="file-max-points-on-a-line-cpp-L43">43</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L44" rel="file-max-points-on-a-line-cpp-L44">44</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L45" rel="file-max-points-on-a-line-cpp-L45">45</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L46" rel="file-max-points-on-a-line-cpp-L46">46</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L47" rel="file-max-points-on-a-line-cpp-L47">47</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L48" rel="file-max-points-on-a-line-cpp-L48">48</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L49" rel="file-max-points-on-a-line-cpp-L49">49</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L50" rel="file-max-points-on-a-line-cpp-L50">50</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L51" rel="file-max-points-on-a-line-cpp-L51">51</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L52" rel="file-max-points-on-a-line-cpp-L52">52</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L53" rel="file-max-points-on-a-line-cpp-L53">53</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L54" rel="file-max-points-on-a-line-cpp-L54">54</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L55" rel="file-max-points-on-a-line-cpp-L55">55</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L56" rel="file-max-points-on-a-line-cpp-L56">56</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L57" rel="file-max-points-on-a-line-cpp-L57">57</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L58" rel="file-max-points-on-a-line-cpp-L58">58</span>
+            <span class="line-number" id="file-max-points-on-a-line-cpp-L59" rel="file-max-points-on-a-line-cpp-L59">59</span>
+          </td>
+          <td class="line-data">
+            <pre class="line-pre"><div class="line" id="file-max-points-on-a-line-cpp-LC1"><span class="cm">/*</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC2"><span class="cm">Given n points on a 2D plane, find the maximum number of points that lie on the same straight line.</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC3"><span class="cm">*/</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC4">&nbsp;</div><div class="line" id="file-max-points-on-a-line-cpp-LC5"><span class="cm">/**</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC6"><span class="cm">* Definition for a point.</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC7"><span class="cm">* struct Point {</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC8"><span class="cm">*     int x;</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC9"><span class="cm">*     int y;</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC10"><span class="cm">*     Point() : x(0), y(0) {}</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC11"><span class="cm">*     Point(int a, int b) : x(a), y(b) {}</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC12"><span class="cm">* };</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC13"><span class="cm">*/</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC14"><span class="k">class</span> <span class="nc">Solution</span> <span class="p">{</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC15"><span class="nl">public:</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC16">	<span class="kt">int</span> <span class="n">maxPoints</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Point</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">points</span><span class="p">)</span> <span class="p">{</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC17">		<span class="k">if</span> <span class="p">(</span><span class="n">points</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC18">			<span class="k">return</span> <span class="mi">0</span><span class="p">;</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC19">		<span class="kt">int</span> <span class="n">maxNum</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC20">		<span class="n">unordered_map</span><span class="o">&lt;</span><span class="kt">float</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">mp</span><span class="p">;</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC21">		<span class="c1">//核心思想就是对每个点与其他的点比较，如果其它的点与这个点同一条直线，那么斜率都是一样的，</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC22">		<span class="c1">//值得注意的事项是这里面有重复点的时候，base要加上1</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC23">		<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">points</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC24">		<span class="p">{</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC25">			<span class="n">mp</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC26">			<span class="kt">int</span> <span class="n">base</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC27">			<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">points</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC28">			<span class="p">{</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC29">				<span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">j</span><span class="p">)</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC30">					<span class="k">continue</span><span class="p">;</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC31">				<span class="c1">//重复的点的时候，base要加一，而且maxNum要随着变化</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC32">				<span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">x</span> <span class="o">==</span> <span class="n">points</span><span class="p">[</span><span class="n">j</span><span class="p">].</span><span class="n">x</span> <span class="o">&amp;&amp;</span> <span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">y</span> <span class="o">==</span> <span class="n">points</span><span class="p">[</span><span class="n">j</span><span class="p">].</span><span class="n">y</span><span class="p">)</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC33">				<span class="p">{</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC34">					<span class="o">++</span><span class="n">base</span><span class="p">;</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC35">					<span class="n">maxNum</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">maxNum</span><span class="p">);</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC36">				<span class="p">}</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC37">				<span class="k">else</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC38">				<span class="p">{</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC39">					<span class="kt">float</span> <span class="n">slop</span><span class="p">;</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC40">					<span class="k">if</span> <span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">x</span> <span class="o">==</span> <span class="n">points</span><span class="p">[</span><span class="n">j</span><span class="p">].</span><span class="n">x</span><span class="p">)</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC41">						<span class="n">slop</span> <span class="o">=</span> <span class="n">INT_MAX</span><span class="p">;</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC42">					<span class="k">else</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC43">						<span class="c1">//特别注意这个地方的要用float取精度</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC44">						<span class="n">slop</span> <span class="o">=</span> <span class="p">(</span><span class="kt">float</span><span class="p">)(</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">y</span> <span class="o">-</span> <span class="n">points</span><span class="p">[</span><span class="n">j</span><span class="p">].</span><span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">x</span> <span class="o">-</span> <span class="n">points</span><span class="p">[</span><span class="n">j</span><span class="p">].</span><span class="n">x</span><span class="p">);</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC45">					<span class="k">if</span> <span class="p">(</span><span class="n">mp</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">slop</span><span class="p">)</span> <span class="o">!=</span> <span class="n">mp</span><span class="p">.</span><span class="n">end</span><span class="p">())</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC46">					<span class="p">{</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC47">						<span class="o">++</span><span class="n">mp</span><span class="p">[</span><span class="n">slop</span><span class="p">];</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC48">					<span class="p">}</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC49">					<span class="k">else</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC50">					<span class="p">{</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC51">						<span class="n">mp</span><span class="p">[</span><span class="n">slop</span><span class="p">]</span> <span class="o">=</span> <span class="n">base</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC52">					<span class="p">}</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC53">					<span class="n">maxNum</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">mp</span><span class="p">[</span><span class="n">slop</span><span class="p">],</span> <span class="n">maxNum</span><span class="p">);</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC54">				<span class="p">}</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC55">			<span class="p">}</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC56">		<span class="p">}</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC57">		<span class="k">return</span> <span class="n">maxNum</span><span class="p">;</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC58">	<span class="p">}</span></div><div class="line" id="file-max-points-on-a-line-cpp-LC59"><span class="p">};</span></div></pre>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+
+          </div>
+        </div>
+    <div id="comments" class="new-comments">
+      
+    </div>
+      <form action="/qingchen021/78d06b20a519aacdbec8/comments" class="js-comment-form" data-pjax-remote="replace" method="post" accept-charset="UTF-8">
+  <input name="authenticity_token" value="d/qAmeHoVNTVQd3W/Rdq4LCSb82CinN+ZJjydyBuuvQ=" type="hidden">
+
+  <div class="discussion-bubble composer">
+    <img class="discussion-bubble-avatar" src="Max%20Points%20on%20a%20Line_files/7413132.png" height="48" width="48">
+    <div class="discussion-bubble-content bubble">
+      <div class="discussion-bubble-inner">
+
+        <dl class="form body">
+          <dd>
+            <div class="js-previewable-comment-form previewable-comment-form write-selected" data-preview-url="/preview">
+              <div class="comment-form-head tabnav">
+                <ul class="js-preview-tabs tabnav-tabs">
+                  <li><a href="#" class="tabnav-tab js-write-tab write-tab selected" action="write">Write</a></li>
+                  <li><a href="#" class="tabnav-tab js-preview-tab preview-tab" action="preview">Preview</a></li>
+                </ul>
+                <span class="tabnav-right">
+                  <span class="tabnav-widget text">
+                    Comments are parsed with <a href="https://help.github.com/articles/github-flavored-markdown" class="gfm-help" target="_blank">GitHub Flavored Markdown</a>
+                  </span>
+                </span>
+              </div>
+
+              <div class="comment-form-error" style="display: none;">There has been an error.</div>
+
+              <div class="tab-content write-content js-write-content">
+                <div class="textarea-frame">
+                  <textarea name="comment[body]" placeholder="Leave a comment" class="js-comment-field js-size-to-fit"></textarea>
+                </div>
+              </div>
+
+              <div class="tab-content preview-content">
+                <div class="comment">
+                  <div class="comment-header normal-comment-header">
+                    <img class="comment-header-gravatar" src="Max%20Points%20on%20a%20Line_files/7413132.png" height="22" width="22">
+                    <a href="#" class="comment-header-author">qingchen021</a>
+                    <span class="comment-header-action-text"><a href="#">commented</a></span>
+                    <span class="comment-header-right">
+                      <a href="#" class="comment-header-date"><time>just now</time></a>
+                    </span>
+                  </div>
+                  <div class="comment-content">
+                    <div class="edit-comment-hide">
+                      <div class="comment-body markdown-body markdown-format preview-content-body js-preview-content">
+                        <p>Nothing to preview</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <button disabled="disabled" class="button primary js-comment-submit" type="submit">Add Comment</button>
+  </div>
+</form>
+
+  </div>
+</div>
+
+  <div class="context-overlay"></div>
+</div>
+
+</div>
+    <div class="slow-loading-overlay"></div>
+  </div>
+
+  <div id="ajax-error-message" class="flash flash-error">
+    <div class="container">
+      <span class="octicon octicon-alert"></span>
+      Something went wrong with that request. Please try again.
+      <a href="#" class="octicon octicon-remove-close ajax-error-dismiss"></a>
+    </div>
+  </div>
+
+
+  <footer>
+    <div id="footer">
+  <div class="container clearfix">
+
+    <!-- Served fresh by github-fe103-cp1-prd.iad.github.net -->
+    <p class="right">© 2014 GitHub Inc. All rights reserved.</p>
+    <a class="left" href="https://gist.github.com/">
+      <span class="mega-octicon octicon-mark-github"></span>
+    </a>
+    <ul id="legal">
+      <li><a href="https://github.com/blog">The GitHub Blog</a></li>
+      <li><a href="mailto:support@github.com">Support</a></li>
+      <li><a href="https://github.com/contact">Contact</a></li>
+    </ul>
+
+  </div><!-- /.container -->
+</div><!-- /.#footer -->
+
+  </footer>
+
+
+
+</body></html>
