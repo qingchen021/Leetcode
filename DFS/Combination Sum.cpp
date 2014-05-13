@@ -33,8 +33,6 @@ public:
             res.push_back(step);
             return ;
         }
-        else if ( target < 0)
-            return ;
         else
         {
             while(begin < ca.size() && ca[begin] <= target)
