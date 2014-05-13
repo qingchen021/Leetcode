@@ -18,9 +18,9 @@ A solution set is:
 class Solution {
 public:
     vector<vector<int> > combinationSum(vector<int> &candidates, int target) {
-        sort(candidates.begin(), candidates.end());
         vector<vector<int> > res;
         if(candidates.size() == 0) return res;
+        sort(candidates.begin(), candidates.end());
         vector<int> step;
         combinationSum(candidates,target,0,step, res );
         return res;
