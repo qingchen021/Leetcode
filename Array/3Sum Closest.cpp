@@ -16,8 +16,6 @@ public:
 		int ret = num[0] + num[1] + num[2];
 		for (int i = 0; i < num.size(); i++)
 		{
-			if (i == 0 || num[i] != num[i - 1])
-			{
 				int begin = i + 1;
 				int end = num.size() - 1;
 				while (begin < end)
@@ -44,7 +42,6 @@ public:
 					}
 				}
 			}
-		}
 		return ret;
 	}
 };
