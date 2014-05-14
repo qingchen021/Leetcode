@@ -14,48 +14,30 @@ Given encoded message "12", it could be decoded as "AB" (1 2) or "L" (12).
 The number of ways decoding "12" is 2. 
 */
 
- class Solution {
- public:
-	 int numDecodings(string s) {
-		 int len = s.length();
-		 if (len == 0)
-			 return 0;
-		 int *arry = new int[len + 1];
-		 arry[0] = 1;
-		 if (s[0] == '0')
-			 arry[1] = 0;
-		 else
-			 arry[1] = 1;
-		 for (int i = 2; i <= len; i++)
-		 {
-			 int p1 = 0;
-			 int p2 = 0;
-			 if (s[i - 1] == '0')
-			 {
-				 p1 = 0;
-			 }
-			 else
-			 {
-				 p1 = arry[i - 1];
-			 }
-			 if (s[i - 2] - '0' < 3 && s[i - 2] - '0' > 0)
-			 {
-			     if(s[i-2] == '2')
-			     {
-			         if(s[i-1] > '6')
-			         {
-			             p2 = 0;
-			         }
-			         else
-			            p2 = arry[i - 2];
-			     }
-			     else
-				    p2 = arry[i - 2];
-			 }
-			 else
-				 p2 = 0;
-			 arry[i] = p1 + p2;
-		 }
-		 return arry[len];
-	 }
- };
+class Solution {
+public:
+	int numDecodings(string s) 
+	{
+		if(s.length()==0)
+			return 0;
+		vector<int> dp(s.length() + 1,0);
+		dp[0] = 1;
+		for(int i = 1;i <= s.length();i++)
+		{
+			if(i == 1)
+				dp[1] = (s[0] == '0'?0:1);
+			else
+			{
+				if((s[i-2]-'0') * 10 + (s[i-1]-'0') <= 26 && s[i-2] !='0')
+				{
+					dp[i] += dp[i-2];
+				}				
+				if(s[i-1] != '0')
+					dp[i] += dp[i-1];
+			}
+			if(dp[i] == 0)
+				return 0;
+		}
+		return dp[s.length()];
+	}
+};
