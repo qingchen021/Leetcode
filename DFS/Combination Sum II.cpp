@@ -17,42 +17,39 @@ A solution set is:
 [1, 1, 6] 
 */
 
- class Solution {
- public:
-	 void dfs(vector<int> &candidates, int target, vector<vector<int> > &res, vector<int> &r, int i){
-		 if (target<0){
-			 return;
-		 }
-		 else{
-			 if (target == 0){
-				 res.push_back(r);
-			 }
-			 else{
-				 int begin = i;
-				 while (i<candidates.size() && target - candidates[i] >= 0)
-				 {
-					 if (i == begin || candidates[i] != candidates[i - 1])
-					 {
-						 r.push_back(candidates[i]);
-						 dfs(candidates, target - candidates[i], res, r, i+1);
-						 r.pop_back();
-						 ++i;
-					 }
-					 else
-						 i++;
-				 }
-			 }
-		 }
+class Solution {
+public:
+	void dfs(vector<int> &candidates, int target, int begin, vector<int> &steps, vector<vector<int> > &res)
+	{
+		if (target == 0)
+		{
+			res.push_back(steps);
+		}
+		else
+		{
+			int cur = begin;
+			while (cur < candidates.size() && target - candidates[cur] >= 0)
+			{
+				if (cur == begin || candidates[cur] != candidates[cur - 1])
+				{
+					steps.push_back(candidates[cur]);
+					dfs(candidates, target - candidates[cur], cur + 1, steps, res);
+					steps.pop_back();
+				}
+				cur++;
+			}
+		}
+	}
 
-	 }
-	 vector<vector<int> > combinationSum2(vector<int> &candidates, int target) {
-		 // Start typing your C/C++ solution below
-		 // DO NOT write int main() function
-		 vector<vector<int> > res;
-		 if (candidates.size() == 0){ return res; }
-		 sort(candidates.begin(), candidates.end());
-		 vector<int> r;
-		 dfs(candidates, target, res, r, 0);
-		 return res;
-	 }
- };
+	vector<vector<int> > combinationSum2(vector<int> &candidates, int target)
+	{
+		// Start typing your C/C++ solution below
+		// DO NOT write int main() function
+		vector<vector<int> > res;
+		if (candidates.size() == 0){ return res; }
+		sort(candidates.begin(), candidates.end());
+		vector<int> steps;
+		dfs(candidates, target, 0, steps, res);
+		return res;
+	}
+};
