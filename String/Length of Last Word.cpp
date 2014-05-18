@@ -12,22 +12,23 @@ return 5.
 
 class Solution {
 public:
-	int lengthOfLastWord(const char *s) {
-		const char * cur = s;
-		const char * start = s;
-		int lastLen = 0;
-		while (true)
-		{
-			if (*cur == ' ' || *cur == '\0')
-			{
-				if (*start != ' ' && *start != '\0')
-					lastLen = cur - start;
-				if (*cur == '\0')
-					break;
-				start = cur + 1;
-			}
-			cur++;
-		}
-		return lastLen;
-	}
+    int lengthOfLastWord(const char *s) {
+        int length = 0;
+        int preLength = 0;
+        while (*s) 
+        {
+            if (*s != ' ') 
+            {
+                length ++;
+            }
+            else if (*s == ' ') 
+            {
+                if(length)
+                    preLength = length;
+                length = 0;
+            }
+            ++s;
+        }
+        return length==0?preLength:length;
+    }
 };
