@@ -45,7 +45,7 @@ public:
 		{
 			for (int i = begin; i <= end; i++)
 			{
-				if (i != begin && !NeedSwap(i, begin, num))
+				if (!NeedSwap(i, begin, num))
 				{
 					continue;
 				}
