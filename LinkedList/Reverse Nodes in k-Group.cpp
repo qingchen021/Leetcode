@@ -15,64 +15,62 @@ For k = 2, you should return: 2->1->4->3->5
 For k = 3, you should return: 3->2->1->4->5 
 */
 
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
 class Solution {
 public:
-	ListNode *reverseKGroup(ListNode * head, int k) {
-		if (head == NULL || k == 1)
-			return head;
-		ListNode * start = head;
-		ListNode * pre = NULL;
-		ListNode * ret = NULL;
-		while (true)
-		{
-			ListNode * cur = start;
-			int i = 1;
-			for (i = 1; i< k; i++)
-			{
-				if (cur == NULL || cur->next == NULL)
-					break;
-				cur = cur->next;
-			}
-			if (i < k)
-			{
-				if (ret == NULL)
-					ret = start;
-				if (pre != NULL)
-				{
-					pre->next = start;
-				}
-				break;
-			}
-			else
-			{
-				ListNode * nextStart = cur->next;
-				ListNode * newStart = Reverse(start, cur->next);
-				if (ret == NULL)
-					ret = newStart;
-				if (pre != NULL)
-				{
-					pre->next = newStart;
-				}				
-				pre = start;
-				start = nextStart;
-			}
-		}
-		return ret;
-	}
-
-	ListNode * Reverse(ListNode * first, ListNode * last)
-	{
-		if (first == last)
-			return first;
-		ListNode * cur = first;
-		ListNode * pre = NULL;
-		while (cur != last)
-		{
-			ListNode * tmp = cur->next;
-			cur->next = pre;
-			pre = cur;
-			cur = tmp;
-		}
-		return pre;
-	}
+    ListNode *reverseKGroup(ListNode *head, int k) {
+        if(head==NULL || k == 1)
+            return head;
+        ListNode dummyNode (INT_MAX);
+        ListNode * pre = & dummyNode;
+        while(head)
+        {
+            ListNode * cur = head;
+            int i = 0;
+            while(cur)
+            {
+                ++i;
+                if(i==k)
+                    break;
+                cur = cur->next;
+            }
+            if(i!=k)
+            {
+                pre->next = head;
+                break;
+            }
+            else
+            {
+                ListNode * next = cur->next;
+                ListNode * last = head;
+                pre->next = reverse(head,cur->next);
+		//Pay attention to fellowing 
+                pre = last;
+                head = next;
+            }
+        }
+        return dummyNode.next;
+    }
+    
+    ListNode * reverse(ListNode * head , ListNode * end)
+    {
+        if(head == NULL || head == end || head->next == end)
+            return head;
+        ListNode * pre = NULL;
+        while(head != end)
+        {
+            ListNode * next = head->next;
+            head->next = pre;
+            pre = head;
+            head = next;
+        }
+        return pre;
+    }
 };
