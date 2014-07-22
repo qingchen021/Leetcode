@@ -16,34 +16,35 @@ You should return the following matrix:
 class Solution {
 public:
     vector<vector<int> > generateMatrix(int n) {
-    	vector<int> tmp(n,0);
-    	vector<vector<int> > ret(n,tmp);
-        int sRow = 0, eRow = n-1;
-        int sCol = 0 ,eCol = n-1;
-        int cur= 0;
-        while(sRow <= eRow)
-        {
-        	for(int i = sCol ; i <= eCol;i++ )
-        	{
-        		ret[sRow][i] = ++cur;
-        	}
-        	for(int i = sRow+1 ; i <= eRow ;i++)
-        	{
-        		ret[i][eCol] = ++cur;
-        	}
-        	for(int i = eCol-1;i >= sCol ; i--)
-        	{
-        		ret[eRow][i] = ++cur;
-        	}
-        	for(int i = eRow-1;i> sRow;i--)
-        	{
-        		ret[i][sCol] = ++cur;
-        	}
-        	sRow++;
-        	eRow--;
-        	sCol++;
-        	eCol--;
-        }
-        return ret;
+        vector<vector<int>> matrix(n,vector<int>(n,0));
+        if(n==0)
+            return matrix;
+        int sRow = 0, eRow = matrix.size()-1;
+        int sCol = 0, eCol = matrix[0].size()-1;
+       int cur = 0;
+       while(true)
+       {
+        for(int i = sCol ;i<= eCol;i++)
+           matrix[sRow][i] = ++cur;
+        sRow++;
+        if(sRow>eRow)
+            break;
+        for(int i = sRow ;i<= eRow;i++)
+            matrix[i][eCol]=++cur;
+        eCol--;
+        if(sCol>eCol)
+            break;
+        for(int i = eCol;i>=sCol;i--)
+             matrix[eRow][i]= ++cur;
+        eRow--;
+        if(sRow>eRow)
+            break;
+        for(int i = eRow;i>=sRow;i--)
+             matrix[i][sCol]=++cur;
+        sCol++;
+        if(sCol>eCol)
+            break;
+       }
+        return matrix;
     }
 };

@@ -20,42 +20,12 @@ Throw an exception? Good, but what if throwing an exception is not an option? Yo
 class Solution {
 public:
     int reverse(int x) {
-        if(x == 0) return 0;
-        vector<int> nums;
-        bool negative = x < 0;
-        if(negative) 
-            x = -x;
+        int ret = 0;
         while(x)
         {
-            nums.push_back(x%10);
-            x = x/10;
+            ret = x%10 + ret *10;
+            x /=10;
         }
-        int ret = 0;
-        int len = 0;
-        while(len <= nums.size() -1)
-        {
-            if(ret == 0)
-            {
-                if(nums[len] == 0)
-                {
-                    len++;
-                    continue;
-                }
-                else
-                {
-                        ret = nums[len];
-                        len++;
-                }
-            }
-            else
-            {
-                ret = ret * 10;
-                ret += nums[len];
-                len++;
-            }            
-        }
-        if(negative)
-            ret = -ret;
         return ret;
     }
 };
