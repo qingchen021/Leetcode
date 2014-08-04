@@ -4,66 +4,38 @@ Given two numbers represented as strings, return multiplication of the numbers a
 Note: The numbers can be arbitrarily large and are non-negative.
 */
 
-class Solution {
-public:
-	string multiply(string num1, string num2) {
-		vector<string> sum;
-		for (int i = num2.length() - 1; i >= 0; i--)
-		{
-			int carry = 0;
-			int curNum = num2[i] - '0';
-			string curStr = "";
-			curStr.insert(0, num2.length() - 1 - i, '0');
-			for (int j = num1.length() - 1; j >= 0; j--)
-			{
-				int n2 = num1[j] - '0';
-				int m = n2 * curNum + carry;
-				carry = m / 10;
-				curStr.insert(0, 1, m % 10 + '0');
-			}
-			if (carry > 0)
-				curStr.insert(0, 1, carry + '0');
-			sum.push_back(curStr);
-		}
-		int carry = 0;
-		string ret = "";
-		for (int j = 1;; j++)
-		{
-			bool flag = false;
-			int curSum = 0;
+class Solution
+ {
 
-			for (int i = 0; i < sum.size(); i++)
-			{
-				int pos = sum[i].length() - j;
-				if (pos >= 0)
-				{
-					flag = true;
-					curSum += sum[i][pos] - '0';
-				}
-			}
-			if (!flag && carry == 0)
-			{
-				break;
-			}
-			curSum += carry;
-			ret.insert(0, 1, curSum % 10 + '0');
-			carry = curSum / 10;
-		}
+ public:
 
-		if (ret[0] == '0')
-		{
-			for (int i = 0; i < ret.length(); i++)
-			{
-				if (ret[i] == '0')
-					continue;
-				else
-				{
-					ret = ret.substr(i);
-				}
-			}
-		}
-		if (ret[0] == '0')
-			return "0";
-		return ret;
-	}
-};
+	 string multiply(string num1, string num2)
+	 {
+		 if (num1 == "0" || num2 == "0")
+			 return "0";
+		 vector<int> result(num1.size() + num2.size(), 0);
+		 for (int i = 0; i < num1.size(); i++)
+		 for (int j = 0; j<num2.size(); j++)
+		 {
+			 result[i + j + 1] += (num1[i] - '0')*(num2[j] - '0');
+		 }
+		 for (int i = num1.size() + num2.size() - 1; i>0; i--)
+		 {
+			 if (result[i]>9)
+			 {
+				 result[i - 1] += result[i] / 10;
+				 result[i] %= 10;
+			 }
+		 }
+		 string ret = "";
+		 int i = 0;
+		 while (result[i] == 0)
+			 i++;
+		 for (; i<num1.size() + num2.size(); i++)
+		 {
+			 ret.append(1, result[i] + '0');
+		 }
+		 return ret;
+	 }
+
+ };
