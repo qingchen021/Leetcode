@@ -30,62 +30,34 @@ Corner Cases:
 
 class Solution {
 public:
-	vector<string> fullJustify(vector<string> &words, int L) {
-		vector<string> ret;
-		int curLeft = L;
-		vector<string> curLine;
-		for (int i = 0; i <= words.size();)
-		{
-			if (i < words.size() && ((curLine.size() == 0 && curLeft >= words[i].length()) ||
-				(curLine.size() > 0 && curLeft >= words[i].length() + 1)))
-			{
-				if (curLine.size() == 0)
-					curLeft -= words[i].length();
-				else
-					curLeft -= words[i].length() + 1;
-				curLine.push_back(words[i]);
-				i++;
-			}
-			else
-			{
-				string s = curLine[0];
-				if (i == words.size())
-				{
-					for (int j = 1; j < curLine.size(); j++)
-					{
-						s.append(1, ' ');
-						s += curLine[j];
-					}
-					s.append(curLeft, ' ');
-					ret.push_back(s);
-					break;
-				}
-				int dev = curLine.size() - 1;
-				if (dev == 0)
-				{
-					s.append(curLeft, ' ');
-				}
-				else
-				{
-					int avg = curLeft / dev;
-					int additions = curLeft % dev;
-					for (int j = 1; j < curLine.size(); j++)
-					{
-						if (additions > 0)
-						{
-							s.append(avg + 1 + 1, ' ');
-							additions--;
-						}
-						else
-							s.append(avg + 1, ' ');
-						s += curLine[j];
-					}
-				}
-				ret.push_back(s);
-				curLeft = L;
-				curLine.clear();
-			}
-		}
-		return ret;
-	}
+    vector<string> fullJustify(vector<string> &words, int L) {
+        vector<string> res;
+        for(int i = 0 ;i < words.size();)
+        {
+            vector<string> v(1,words[i++]);
+            int used = v[0].size();
+            for(;i<words.size() && words[i].size()+1+used<=L;i++)
+            {
+                v.push_back(" " + words[i]);
+                used+= words[i].size()+1;
+            }
+            string line ;
+            int space_size = L -used;
+            int space_num = v.size()-1;
+            if(space_num>0)
+            {
+                vector<string> v_space(space_num,"");
+                for(int j = 0;j<space_size;j++)
+                    v_space[j%space_num] += " ";
+                for(int j = 0 ; j < space_num;j++)
+                {
+                    line += v[j] + ((i==words.size())?"":v_space[j]);
+                }
+            }
+            line += v[space_num];
+            line.resize(L,' ');
+            res.push_back(line);
+        }
+        return res;
+    }
 };
