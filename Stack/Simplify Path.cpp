@@ -16,38 +16,42 @@ Corner Cases:
 
 class Solution {
 public:
-	string simplifyPath(string path) {
-		stack<string> pathStack;
-		int pre = 0, cur = 0;
-		while (cur < path.length() - 1 && pre < path.length() - 1)
+	string simplifyPath(string path)
+	{
+		stack<string> paths;
+		int last = 0;
+		int cur = 1;
+		while (cur <= path.size())
 		{
-			cur = path.find('/', pre + 1);
-			if (cur == string::npos)
-				cur = path.length();
-			string str = path.substr(pre + 1, cur - pre - 1);
-			pre = cur;
-			if (str == "." || str == "")
+			if (cur == path.size() || path[cur] == '/')
 			{
-				continue;
+				if (cur - last > 1)
+				{
+					string str = path.substr(last + 1, cur - last - 1);
+					last = cur;
+					if (str == "..")
+					{
+						if (!paths.empty())
+							paths.pop();
+					}
+					else if (str != ".")
+					{
+						paths.push(str);
+					}
+				}
+				else
+				{
+					last = cur;
+				}
 			}
-			else if (str == "..")
-			{
-				if (!pathStack.empty())
-					pathStack.pop();
-			}
-			else
-				pathStack.push(str);
+			++cur;
 		}
 		string ret = "";
-		while (!pathStack.empty())
+		while (!paths.empty())
 		{
-			ret.insert(0, "/" + pathStack.top());
-			pathStack.pop();
+			ret.insert(0, "/" + paths.top());
+			paths.pop();
 		}
-
-		if (ret == "")
-			return "/";
-		else
-			return ret;
+		return ret.length() == 0 ? "/" : ret;
 	}
 };
