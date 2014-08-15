@@ -12,39 +12,43 @@ Sort a linked list in O(n log n) time using constant space complexity.
 class Solution {
 public:
     ListNode *sortList(ListNode *head) {
-        if(head==NULL||head->next==NULL)
+        if (head == NULL || head->next == NULL)
             return head;
-        ListNode * slow = head, * fast = head;
-        while(fast->next&&fast->next->next)
+        ListNode * slow = head, *fast = head, *preSlow = NULL;
+        while (fast && fast->next)
         {
+            fast = fast->next->next;
+            preSlow = slow;
             slow = slow->next;
-            fast = fast->next->next;;
         }
-        
-        ListNode * tmp = slow->next;
-        slow->next = NULL;
+        preSlow->next = NULL;
         ListNode * first = sortList(head);
-        ListNode * second = sortList(tmp);
+        ListNode * last = sortList(slow);
         ListNode dummyNode(INT_MIN);
         ListNode * pre = &dummyNode;
-        while(first&&second)
+        while (first&&last)
         {
-            if(first->val < second->val)
+            if (first->val<last->val)
             {
-                pre->next =first;
-                first=first->next;
+                pre->next = first;
+                first = first->next;
             }
             else
             {
-                pre->next = second;
-                second = second->next;
+                pre->next = last;
+                last = last->next;
             }
             pre = pre->next;
         }
-        if(first)
-            pre->next = first;
-        if(second)
-            pre->next = second;
+        ListNode * left = NULL;
+        if (first)
+            left = first;
+        if (last)
+            left = last;
+        if (left)
+        {
+            pre->next = left;
+        }
         return dummyNode.next;
     }
 };
