@@ -13,24 +13,21 @@ Here are few examples.
 class Solution {
 public:
     int searchInsert(int A[], int n, int target) {
-        int begin = 0, end = n-1;
-        int mid ;
-        while(begin <= end)
+        int begin = 0, end = n -1;
+        int pos = -1;
+        while(begin<=end)
         {
-        	mid = (begin+ end)/2;
-        	if(A[mid]==target)
-        	{
-        		return mid;
-        	}
-        	else if(A[mid] > target)
-        	{
-        		end--;
-        	}
-        	else
-        	{
-        		begin++;
-        	}
+            int mid = begin + (end-begin)/2;
+            if(A[mid]>=target)
+            {
+                end = mid -1;
+            }
+            else
+            {
+                begin = mid +1;
+                pos = mid;
+            }
         }
-        return target > A[mid]?mid+1:mid;
+        return pos + 1;
     }
 };
