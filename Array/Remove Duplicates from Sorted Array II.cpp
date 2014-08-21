@@ -11,32 +11,24 @@ Your function should return length = 5, and A is now [1,1,2,2,3].
 class Solution {
 public:
     int removeDuplicates(int A[], int n) {
-        if(n == 0)
-        	return 0;
+        if(n==0||n==1)
+            return n;
         int pre = A[0];
-        int times = 1;
-        int index = 1;
-        for(int i = 1; i < n ;i++)
+        int curIndex = 0;
+        int repeatTime = 1;
+        for(int i = 1 ;i < n;i++)
         {
-        	if(A[i] == pre)
-        	{
-        		if(times==2)
-        		{
-        			continue;
-        		}
-        		else
-        		{
-        			times++;
-        			A[index++] = A[i];
-        		}
-        	}
-        	else
-        	{
-        		pre = A[i];
-        		times = 1;
-        		A[index++]=A[i];
-        	}
+            if(pre == A[i])
+                repeatTime += 1;
+            if(pre != A[i] || repeatTime < 3)
+            {
+                curIndex++;
+                A[curIndex] = A[i];
+                if(pre!=A[i])
+                    repeatTime = 1;
+            }
+            pre = A[i];
         }
-        return index;
+        return curIndex+1;
     }
 };
