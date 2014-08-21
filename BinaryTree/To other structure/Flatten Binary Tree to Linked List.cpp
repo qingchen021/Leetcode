@@ -34,27 +34,35 @@ The flattened tree should look like:
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
+
 class Solution {
 public:
     void flatten(TreeNode *root) {
+        if(root==NULL)
+            return ;
         Flatten(root);
     }
-
-    TreeNode* Flatten(TreeNode * root)
+    
+    TreeNode * Flatten(TreeNode * root)
     {
-    	if(root == NULL)
-    		return NULL;
-    	TreeNode * left = Flatten(root->left);
-    	TreeNode * mostRight = left;
-    	while(mostRight && mostRight->right)
-    		mostRight = mostRight->right;
-    	root->left = NULL;
-    	if(mostRight!=NULL)
-    	{
-    		mostRight->right = root->right;
-    		root->right = left;
-    	}
-    	Flatten(root->right);
-    	return root;
+        TreeNode *left = NULL,*right = NULL;
+        if(root->left)
+            left = Flatten(root->left);
+        if(root->right)
+            right = Flatten(root->right);
+        if(left)
+            left->right = root->right;
+        root->right = (root->left==NULL?root->right:root->left);
+        root->left = NULL;
+        if(right != NULL)
+        {
+            return right;
+        }
+        else if(left != NULL)
+        {
+            return left;
+        }
+        else
+            return root;
     }
 };
