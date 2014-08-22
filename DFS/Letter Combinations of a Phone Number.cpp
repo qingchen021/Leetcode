@@ -53,3 +53,45 @@ public:
 		return ret;
 	}
 };
+
+//interative
+/*
+class Solution {
+ public:
+	 vector<string> letterCombinations(string digits) {
+		 vector<string> ret;
+		 ret.push_back("");
+		 for (int j = 0; j < digits.size(); j++)
+		 {
+			 string str = GetString(digits[j]);
+			 vector<string> v;
+			 for (int k = 0; k < str.size(); k++)
+			 {				
+				 for (int i = 0; i < ret.size(); i++)
+				 {
+					 string s = ret[i];
+					 s.append(1, str[k]);
+					 v.push_back(s);
+				 }				
+			 }
+			 ret = v;
+		 }
+		 return ret;
+	 }
+
+	 string GetString(char c)
+	 {
+		 if (c == '7')
+			 return "pqrs";
+		 if (c == '8')
+			 return "tuv";
+		 if (c == '9')
+			 return "wxyz";
+		 int n = c - '0';
+		 string ret;
+		 for (int i = 0; i < 3; i++)
+			 ret.append(1, 'a' + (n - 2) * 3 + i);
+		 return ret;
+	 }
+ };
+*/
