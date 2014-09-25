@@ -11,34 +11,35 @@ Given an integer n, generate the nth sequence.
 Note: The sequence of integers will be represented as a string
 */
 
-class Solution {
-public:
-	string countAndSay(int n) {
-		int i = 1;
-		string curStr = "1";
-		while (i < n)
-		{
-			char c = curStr[0];
-			int times = 0;
-			string tmp = curStr;
-			curStr = "";
-			for (int j = 0; j <= tmp.size(); j++)
-			{
-				if (j < tmp.size() && tmp[j] == c)
-				{
-					times++;
-				}
-				else
-				{
-					string timesStr = to_string(times);
-					curStr += timesStr;
-					curStr.push_back(c);
-					c = tmp[j];
-					times = 1;
-				}
-			}
-			i++;
-		}
-		return curStr;
-	}
-};
+ class Solution {
+ public:
+	 string countAndSay(int n) {
+		 string num = "1";
+		 for (int j = n-1; j > 0; --j)
+		 {
+			 string cur = "";
+			 char pre = num[0];
+			 int preTimes = 0;
+			 for (int i = 0; i <= num.length(); i++)
+			 {
+				 if (i<num.length() && num[i] == pre)
+				 {
+					 preTimes++;
+				 }
+				 else
+				 {
+					 char times = preTimes + '0';
+					 cur.append(1, times);
+					 cur.append(1, pre);
+					 if (i < num.length())
+					 {
+						 pre = num[i];
+						 preTimes = 1;
+					 }
+				 }
+			 }
+			 num = cur;
+		 }
+		 return num;
+	 }
+ };
