@@ -4,21 +4,29 @@ Given a m x n grid filled with non-negative numbers, find a path from top left t
 Note: You can only move either down or right at any point in time.
 */
 
+
 class Solution {
 public:
-    int minPathSum(vector<vector<int> > &grid) {
-        vector<vector<int> > dp(grid.size(),vector<int>(grid[0].size(),0));
-        for(int i = 0 ;i < grid.size();i++)
-            for(int j = 0 ; j < grid[0].size();j++)
+    int minPathSum(vector<vector<int> > &grid)
+    {
+        if(grid.size() == 0)
+            return 0;
+        vector<int> dp(grid[0].size(),0);
+        int rows = grid.size();
+        int cols = grid[0].size();
+        for(int i = 0 ;i < rows;i++)
+            for(int j = 0; j < cols;j++)
             {
-                if(i>0 && j>0)
-                    dp[i][j] = min(dp[i-1][j],dp[i][j-1]);
-                else if(i>0)
-                    dp[i][j]= dp[i-1][j];
-                else if(j>0)
-                    dp[i][j]= dp[i][j-1];
-                dp[i][j] += grid[i][j];
+                int left = INT_MAX, top = INT_MAX;
+                if(j>0)
+                    left = dp[j-1];
+                if(i>0)
+                    top = dp[j];
+                if(i==0 &&j==0)
+                    dp[j] = grid[i][j];
+                else
+                    dp[j] = min(left,top) + grid[i][j];
             }
-        return dp[grid.size()-1][grid[0].size()-1];
+        return dp[cols-1];
     }
 };
