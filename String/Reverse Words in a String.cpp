@@ -20,42 +20,51 @@ Clarification:
 class Solution {
 public:
 	void reverseWords(string &s) {
-		string ret;
-		int len = s.length();
-		Reverse(s, 0, len - 1);
-		int begin = 0, end = 0;
-		do
+		int start = 0, end = s.length() - 1;
+		while (s[start] == ' ')  ++start;
+		while (s[end] == ' ') --end;
+		Reverse(s, start, end);
+		int cur = start;
+		int lastStart = start;
+		int lastPos = start;
+		while (cur <= end + 1)
 		{
-			while (begin < len && s[begin] == ' ')
+			if (s[cur] == ' ' || cur == end + 1)
 			{
-				begin++;
-			}
-			if (begin == len)
-				break;
-			else
-			{
-				end = begin;
-				while (end < len && s[end] != ' ')
+				if (lastStart != -1)
 				{
-					end++;
+					Reverse(s, lastStart, cur - 1);
+					Move(s, lastPos, lastStart, cur - 1);
+					lastPos += cur - lastStart + 1;
+					s[lastPos - 1] = ' ';
+					lastStart = -1;
 				}
-				Reverse(s, begin, end - 1);
-				ret.append(s.substr(begin, end - begin));
-				ret.append(" ");
-				begin = end;
 			}
-		} while (end < len);
-
-		s = ret.substr(0, ret.length() - 1);
-
+			else
+			if (lastStart == -1)
+				lastStart = cur;
+			cur++;
+		}
+		s = s.substr(start, lastPos - start - 1);
 	}
 
-	void Reverse(string & s, int begin, int end)
+	void Move(string & s, int pos, int start, int end)
 	{
-		int len = end - begin;
+		int len = end - start + 1;
+		if (len <= 0 || pos == start)
+			return;
+		for (int i = 0; i < len; i++)
+			s[pos + i] = s[start + i];
+
+	}
+	void Reverse(string & s, int start, int end)
+	{
+		if (start >= end )
+			return;
+		int len = end - start;
 		for (int i = 0; i <= len / 2; i++)
 		{
-			swap(s[i + begin], s[len - i + begin]);
+			swap(s[start + i], s[end - i]);
 		}
 	}
 };
