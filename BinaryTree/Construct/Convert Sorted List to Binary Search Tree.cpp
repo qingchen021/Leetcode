@@ -19,39 +19,31 @@ Given a singly linked list where elements are sorted in ascending order, convert
  * };
  */
  
-class Solution {
+class Solution 
+{
 public:
-    TreeNode *sortedListToBST(ListNode *head) {
-    	if(head == NULL)
-    		return NULL;
-        TreeNode * ret = sortedListToBST(head, NULL);
-        return ret;
-    }
-
-    TreeNode *sortedListToBST(ListNode *start,ListNode *end) 
-    {
-    		if(start == end) 
-    			return NULL;
-    		ListNode * mid = FindMiddle(start,end);;
-     		TreeNode * midTree = new TreeNode(mid->val); 
-     		TreeNode * left = sortedListToBST(start, mid);
-     		TreeNode * right = sortedListToBST(mid->next,end);
-     		midTree->left = left;
-     		midTree->right = right;
-     		return midTree;
-    }
-
-    ListNode * FindMiddle(ListNode * start, ListNode * end)
-    {
-    	ListNode * slow = start, * fast = start;
-    	while(fast != end)
+    	TreeNode *sortedListToBST(ListNode *head) 
     	{
-    		fast = fast->next;
-    		if(fast==end)
-    			break;
-    		fast = fast->next;
-    		slow = slow->next;
-       	}
-       	return slow;
-    }
+		if(head == NULL)
+			return NULL;
+		if(head->next == NULL)
+			return new TreeNode(head->val);
+		ListNode * slow = head , * fast = head;
+		ListNode * pre = NULL;
+		while(fast && fast->next && fast->next->next)
+		{
+			fast = fast->next->next;
+			pre = slow;
+			slow = slow->next;
+		}
+		TreeNode * n = new TreeNode( slow->val);
+		if(pre!=NULL)
+		{
+		    pre->next = NULL;
+		    n->left = sortedListToBST(head);
+		}
+		n->right = sortedListToBST(slow->next);
+		return n;		
+    	}
+	
 };
