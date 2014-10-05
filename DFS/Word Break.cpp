@@ -8,6 +8,38 @@ dict = ["leet", "code"].
 Return true because "leetcode" can be segmented as "leet code". 
 */
 
+/*
+
+//DP solution
+
+class Solution {
+public:
+    bool wordBreak(string s, unordered_set<string> &dict) 
+    {
+        vector<int> dp(s.size()+1,-1);
+        dp[0] = 0;
+        for(int i = 0 ; i < s.size();++i)
+        {
+            if(dp[i] != -1)
+            {
+                for(int j = i+1;j <= s.size();++j)
+                {
+                    string substr= s.substr(i,j-i);
+                    if(dict.find(substr)!=dict.end())
+                    {
+                        dp[j] = dp[i]+1;
+                    }
+                }
+            }
+        }
+        return dp[s.size()]!=-1;
+    }
+};
+
+
+
+*/
+
 class Solution {
 public:
     bool wordBreak(string s, unordered_set<string> &dict)
