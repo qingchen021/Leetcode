@@ -11,20 +11,24 @@ Given array A = [2,3,1,1,4]
 The minimum number of jumps to reach the last index is 2. (Jump 1 step from index 0 to 1, then 3 steps to the last index.) 
 */
 
-class Solution {
+class Solution 
+{
 public:
-    int jump(int A[], int n) {
-        int nextLevelMax = 0;
-        int steps = 0;
-        int thisLevelMax = 0;
+    int jump(int A[], int n) 
+    {
+        int curMax = 0,nextMax = 0, steps = 0;
         for(int i = 0 ;i < n;i++)
         {
-            if(i > thisLevelMax)
+            if(i>curMax)
             {
                 steps++;
-                thisLevelMax = nextLevelMax;
+                curMax = nextMax;
             }
-            nextLevelMax = max(nextLevelMax,i+A[i]);
+            nextMax = max(nextMax, A[i] + i);
+            if(i==n-1)
+                return steps;
+            else if(nextMax>=n-1)
+                return steps+1;
         }
         return steps;
     }
