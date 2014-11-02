@@ -14,63 +14,23 @@ First, iterate the array counting number of 0's, 1's, and 2's, then overwrite ar
 
 Could you come up with an one-pass algorithm using only constant space?
 */ 
-class Solution
- {
 
- public:
-
-	 void sortColors(int A[], int n)
-	 {
-
-		 int c1 = -1, c2 = -1, c3 = -1;
-		 for (int i = 0; i < n; i++)
-		 {
-			 if (A[i] == 2)
-			 {
-				 if (c3 == -1)
-				 {
-					 c3 = (c2 > c1 ? c2 : c1) + 1;
-				 }
-				 else
-				 {
-					 c3 += 1;
-				 }
-				 A[c3] = 2;
-
-			 }
-			 if (A[i] == 1)
-			 {
-				 if (c2 == -1)
-				 {
-					 c2 = c1 + 1;
-				 }
-				 else
-				 {
-					 c2 += 1;
-				 }
-				 A[c2] = 1;
-				 if (c3 != -1)
-				 {
-					 c3 += 1;
-					 A[c3] = 2;
-				 }
-			 }
-			 if (A[i] == 0)
-			 {
-				 c1 += 1;
-				 A[c1] = 0;
-				 if (c2 != -1)
-				 {
-					 c2 += 1;
-					 A[c2] = 1;
-				 }
-				 if (c3 != -1)
-				 {
-					 c3 += 1;
-					 A[c3] = 2;
-				 }
-			 }
-		 }
-	 }
-
- };
+class Solution {
+public:
+    void sortColors(int A[], int n) {
+        int left = 0, right = n-1;
+        for(int i = 0;i <=right;)
+        {
+            if(A[i]==0)
+            {
+                swap(A[left++],A[i++]);
+            }
+            else if(A[i]==2)
+            {
+                swap(A[right--],A[i]);
+            }
+            else
+                i++;
+        }
+    }
+};

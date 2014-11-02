@@ -1,4 +1,4 @@
-/*
+﻿/*
  Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers.
 
 If such arrangement is not possible, it must rearrange it as the lowest possible order (ie, sorted in ascending order).
@@ -17,7 +17,7 @@ public:
 	 if(num.size() == 0) return ;
 	 int size = num.size();
 	 int tillNowBiggest = num[size - 1];
-     for(int i = size - 2 ;i >= 0 ;i--)
+     	 for(int i = size - 2 ;i >= 0 ;i--)
 	 {
 		if(num[i] >= tillNowBiggest)
 		{
