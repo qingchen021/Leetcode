@@ -15,25 +15,21 @@ Return true because "leetcode" can be segmented as "leet code".
 class Solution {
 public:
     bool wordBreak(string s, unordered_set<string> &dict) 
-    {
-        vector<int> dp(s.size()+1,-1);
-        dp[0] = 0;
-        for(int i = 0 ; i < s.size();++i)
-        {
-            if(dp[i] != -1)
-            {
-                for(int j = i+1;j <= s.size();++j)
-                {
-                    string substr= s.substr(i,j-i);
-                    if(dict.find(substr)!=dict.end())
-                    {
-                        dp[j] = dp[i]+1;
-                    }
-                }
-            }
-        }
-        return dp[s.size()]!=-1;
-    }
+	{
+		vector<bool> dp(s.length()+1,false);
+		dp[0] = true;
+		for(int i = 1 ; i<= s.length();i++)
+			for(int j = i; j>=1;j--)
+			{
+				string subStr = s.substr(j-1,i-j+1);
+				if(dict.find(subStr)!=dict.end()&&dp[j-1])
+				{
+					dp[i]= true;
+					break;
+				}
+			} 
+		return dp[s.length()];
+    	}
 };
 
 
