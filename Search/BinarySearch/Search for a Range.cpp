@@ -13,39 +13,42 @@ return [3, 4].
 class Solution {
 public:
     vector<int> searchRange(int A[], int n, int target) {
-        int begin = 0, end = n-1;
-        int low = -1;
+        int low = -1, high = n;
+        int begin = 0 , end = n-1;
         while(begin<=end)
         {
             int mid = begin + (end - begin)/2;
             if(A[mid] >= target)
             {
-                if(A[mid]==target)
-                    low = mid;
-                end = mid -1;
+                end = mid-1;
             }
             else
             {
+                low = mid;
                 begin = mid + 1;
             }
         }
-        int high = -1;
+        if(low+1==n || A[low+1]!=target)
+        {
+            return vector<int>(2,-1);
+        }
         begin = 0, end = n-1;
         while(begin<=end)
         {
-            int mid = begin +(end-begin)/2;
-            if(A[mid]<=target)
+            int mid = begin + (end - begin)/2;
+            if(A[mid] > target)
             {
-                if(A[mid]==target)
-                    high = mid;
-               begin = mid +1;
+                high = mid;
+                end = mid-1;
             }
             else
-                end = mid -1;
+            {
+                begin = mid +1;
+            }
         }
         vector<int> ret;
-        ret.push_back(low);
-        ret.push_back(high);
+        ret.push_back(low+1);
+        ret.push_back(high-1);
         return ret;
     }
 };
