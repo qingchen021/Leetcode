@@ -33,55 +33,44 @@ After calling your function, the tree should look like:
  *  TreeLinkNode(int x) : val(x), left(NULL), right(NULL), next(NULL) {}
  * };
  */
+ 
+/**
+ * Definition for binary tree with next pointer.
+ * struct TreeLinkNode {
+ *  int val;
+ *  TreeLinkNode *left, *right, *next;
+ *  TreeLinkNode(int x) : val(x), left(NULL), right(NULL), next(NULL) {}
+ * };
+ */
 class Solution {
 public:
     void connect(TreeLinkNode *root) {
-        if(root == NULL)
-        	return ;
-        root->next = NULL;
         TreeLinkNode * cur = root;
-        TreeLinkNode * nextStart = NULL;
         while(cur)
         {
-            TreeLinkNode tmp(0);
-        	TreeLinkNode * nextLevelPre =&tmp;
-        	while(cur)
-        	{
-        		while(cur && cur->left == NULL && cur->right == NULL)
-        		{
-        			cur = cur->next;
-        		}
-        		if(cur == NULL)
-        			break;
-        		if(nextStart == NULL)
-        		{
-        			if(cur->left)
-        				nextStart= cur->left;
-        			else
-        				nextStart = cur->right;
-        		}
-        		if(cur->left != NULL)
-        		{
-        			nextLevelPre->next = cur->left;
-        			if(cur->right != NULL)
-        			{     
-        				cur->left ->next = cur->right;   				
-        				nextLevelPre = cur->right;        				
-        			}
-        			else
-        			{
-        				nextLevelPre = cur ->left;
-        			}
-        		}
-        		else
-        		{
-        		    nextLevelPre->next = cur->right;
-        			nextLevelPre = cur->right;     
-        		}
-        		cur = cur->next;
-        	}
-        	cur = nextStart;
-        	nextStart = NULL;
+            TreeLinkNode * thisLevel = cur;
+            TreeLinkNode * nextLevel = NULL;
+            TreeLinkNode dummyNode(0);
+            TreeLinkNode * nextPre = &dummyNode;
+            while(thisLevel)
+            {
+                if(thisLevel->left)
+                {
+                    nextPre->next = thisLevel->left;
+                    nextPre = nextPre->next;
+                    if(!nextLevel)
+                        nextLevel = thisLevel->left;
+                }
+                if(thisLevel->right)
+                {
+                    nextPre->next = thisLevel->right;
+                    nextPre = nextPre->next;
+                    if(!nextLevel)
+                        nextLevel = thisLevel->right;
+                }
+                thisLevel = thisLevel->next;
+            }
+            cur = nextLevel;
         }
     }
 };
