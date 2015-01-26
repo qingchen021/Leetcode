@@ -6,39 +6,26 @@ The brackets must close in the correct order, "()" and "()[]{}" are all valid bu
 
  class Solution
  {
-
  public:
-
 	 bool isValid(string s)
 	 {
-
 		 map<char, char> dicts;
 		 dicts[')'] = '(';
 		 dicts[']'] = '[';
 		 dicts['}'] = '{';
-
-		 int len = s.length();
 		 stack<char> cStack;
-		 for (int i = 0; i < len; i++)
-		 {
-			 if (s[i] == ')' || s[i] == '}' || s[i] == ']')
-			 {
-				 if (!cStack.empty())
-				 {
-					 if (dicts[s[i]] == cStack.top())
-						 cStack.pop();
-					 else
-						 return false;
-				 }
-				 else
-					 return false;
-			 }
+		 for (int i = 0; i < s.length(); i++)
+		    if(dicts.find(s[i]) != dicts.end())
+			    if (!cStack.empty()){
+				    if (dicts[s[i]] == cStack.top())
+					    cStack.pop();
+					else
+					    return false;
+			    }
+				else
+					   return false;
 			 else
 				 cStack.push(s[i]);
-		 }
-		 // dont forget to judge the stack 
-		 if (!cStack.empty())
-			 return false;
-		 return true;
+		 return cStack.empty();
 	 }
  };
