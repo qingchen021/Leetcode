@@ -1,4 +1,4 @@
-/*
+﻿/*
 Given an array S of n integers, are there elements a, b, c, and d in S such that a + b + c + d = target? 
 Find all unique quadruplets in the array which gives the sum of target.
 
@@ -16,45 +16,40 @@ Note:
 
 */
 
-class Solution {
-public:
-    vector<vector<int> > fourSum(vector<int> &num, int target) {
-        // Note: The Solution object is instantiated only once.
-        vector<vector<int>> res;
-    	int numlen = num.size();
-		if(num.size()<4)return res;
-		
-		sort(num.begin(),num.end());
-		set<vector<int>> tmpres;
-		for(int i = 0; i < numlen; i++)
-		{
-			for(int j = i+1; j < numlen; j++)
-			{
-				int begin = j+1;
-				int end = numlen-1;
-				while(begin < end)
-				{
-					int sum = num[i]+ num[j] + num[begin] + num[end];
-					if(sum == target)
-					{
-						vector<int> tmp;
-						tmp.push_back(num[i]);
-						tmp.push_back(num[j]);
-						tmp.push_back(num[begin]);
-						tmp.push_back(num[end]);
-						tmpres.insert(tmp);
-						begin++;
-						end--;
-					}else if(sum<target)
-						begin++;
-					else
-						end--;
-				}
-			}
-		}
-		set<vector<int>>::iterator it = tmpres.begin();
-		for(; it != tmpres.end(); it++)
-			res.push_back(*it);
-		return res;
-    }
-};
+
+ class Solution {
+ public:
+	 vector<vector<int> > fourSum(vector<int> &num, int target) {
+		 sort(num.begin(), num.end());
+		 vector<vector<int> > ret;
+		 for (int i = 0; i < num.size(); i++)
+		 {
+			 if (i > 0 && num[i] == num[i - 1])
+				 continue;
+			 for (int j = i + 1; j<num.size(); j++)
+			 {
+				 if (j > i+1 && num[j] == num[j - 1])
+					 continue;
+				 int begin = j+1, end = num.size() - 1;
+				 while (begin<end)
+				 {
+					 int sum = num[i] + num[j] + num[begin] + num[end];
+					 if (sum == target)
+					 {
+						 vector<int> r = { num[i], num[j], num[begin], num[end] };
+						 ret.push_back(r);
+						 while (++begin < end && num[begin] == num[begin - 1])
+							 ;
+						 while (begin< --end && num[begin] == num[end + 1])
+							 ;
+					 }
+					 else if (sum > target)
+						 end--;
+					 else
+						 begin++;
+				 }
+			 }
+		 }
+		 return ret;
+	 }
+ };

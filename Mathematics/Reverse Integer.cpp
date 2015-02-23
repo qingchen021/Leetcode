@@ -17,15 +17,25 @@ Throw an exception? Good, but what if throwing an exception is not an option? Yo
 
 */
 
-class Solution {
-public:
-    int reverse(int x) {
-        int ret = 0;
-        while(x)
-        {
-            ret = x%10 + ret *10;
-            x /=10;
-        }
-        return ret;
-    }
-};
+ class Solution {
+ public:
+	 int reverse(int x) {
+		 int p = 1;
+		 long long n = 0;
+		 long long xL = x;
+		 if (xL<0)
+		 {
+			 p = -1;
+			 xL = -xL;
+		 }
+		 while (xL)
+		 {
+			 n *= 10;
+			 n += xL % 10;
+			 xL = xL / 10;
+		 }
+		 if (n > INT_MAX || (p == -1 && -n <= INT_MIN))
+			 return 0;
+		 return n * p;
+	 }
+ };

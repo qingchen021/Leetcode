@@ -16,40 +16,33 @@ There is a more generic way of solving this problem.
 */
 
 class Solution {
-public:
-	bool isPalindrome(int x) {
-		if (x < 0)
-			return false;
-		int front = x;
-		int frontDev = 1;
-		int len = 1;
-		int frontLeft = x;
-		while (frontLeft >= 10)
-		{
-			frontDev *= 10;
-			frontLeft /= 10;
-			len += 1;
-		}
-		int i = 0;
-		int back = x;
-		int backLeft = x;
-
-		frontLeft = x;
-		while (i < len / 2)
-		{
-			front = frontLeft / frontDev;
-			frontLeft = frontLeft % (frontDev);
-		    frontDev = frontDev / 10;
-
-			back = backLeft % 10;
-			backLeft = backLeft / 10;
-
-			if (front != back)
-			{
-				return false;
-			}
-			i++;
-		}
-		return true;
-	}
-};
+ public:
+	 bool isPalindrome(int x) {
+	      if (x < 0)
+			 return false;
+		 int bits = 0;
+		 long long h = 1;
+		 int n = x;
+		 while (n)
+		 {
+			 bits++;
+			 h *= 10;
+			 n = n / 10;
+		 }
+		 if (h>1)
+			 h /= 10;
+		 while (bits > 0)
+		 {
+			 int left = x / h;
+			 int right = x % 10;
+			 if (left != right)
+				 return false;
+			 x = x - left * h;
+			 x = x - right;
+			 x /= 10;
+			 h /= 100;
+			 bits -= 2;
+		 }
+		 return true;
+	 }
+ };

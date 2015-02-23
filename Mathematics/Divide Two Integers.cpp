@@ -1,44 +1,42 @@
-/*
+﻿/*
 Divide two integers without using multiplication, division and mod operator. 
 */
 
-class Solution {
-public:
-	int divide(int dividend, int divisor) {
-		long long p = 1;
-		//主要是考虑溢出用longlong
-		long long dividendLong = dividend, divisorLong = divisor;
-		if (dividend < 0 || divisor < 0)
-		{
-			if (dividendLong < 0 && divisorLong < 0)
-				p = 1;
-			else
-				p = -1;
-			if (dividendLong < 0)
-				dividendLong = -dividendLong;
-			if (divisorLong < 0)
-				divisorLong = -divisorLong;
-		}
-		long long begin = 0, end = dividendLong;
-		long long lastSmaller;
-		while (begin <= end)
-		{
-			long long mid = (begin + end) / 2;
-			long long tmp = mid *divisorLong;
-			if (tmp == dividendLong)
-			{
-				return mid * p;
-			}
-			else if (tmp > dividendLong)
-			{
-				end = mid - 1;
-			}
-			else
-			{
-				lastSmaller = mid;
-				begin = mid + 1;
-			}
-		}
-		return lastSmaller * p;
-	}
-};
+ class Solution {
+ public:
+	 int divide(int dividend, int divisor)
+	 {
+		 int p = 1;
+		 long long dividendL = dividend, divisorL = divisor;
+		 if (dividendL > 0 ^ divisorL >0)
+		 {
+			 p = -1;
+		 }
+		 if (dividendL< 0) dividendL = -dividendL;
+		 if (divisorL < 0) divisorL = -divisorL;
+		 long long start = 0, end = dividendL;
+		 long long  result;
+		 while (start <= end)
+		 {
+			 long long mid = start + (end - start) / 2;
+			 long long m = mid * divisorL;
+			 if (m == dividendL)
+			 {
+				 result = mid*p;
+				 break;
+			 }
+			 else if (m < dividendL)
+			 {
+				 result = mid*p;
+				 start = mid + 1;
+			 }
+			 else
+				 end = mid - 1;
+		 }
+		 if (result >= INT_MAX )
+			 return INT_MAX;
+		 if (result <= INT_MIN)
+			 return INT_MIN;
+		 return result;
+	 }
+ };
