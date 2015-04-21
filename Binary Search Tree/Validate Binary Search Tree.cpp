@@ -19,41 +19,26 @@ confused what "{1,#,2,3}" means? > read more on how binary tree is serialized on
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
- 
 class Solution {
 public:
     bool isValidBST(TreeNode *root) {
         TreeNode * pre = NULL;
-       return isVaildBST(root,pre);
+        return isVaildBST(pre,root);
     }
-
-    bool isVaildBST(TreeNode *root, TreeNode * & pre)
+    bool isVaildBST(TreeNode * & pre, TreeNode * root)
     {
-    	if(root!=NULL)
-    	{
-    		if(root->left)
-    			if(!isVaildBST(root->left,pre))
-    			{
-    				return false;
-    			}
-    		if(pre!=NULL)
-    		{
-    		    if(pre->val >= root->val)
-    		        return false;
-    		}
-    		pre = root;
-    		
-    		if(root->right)
-    			if(!isVaildBST(root->right,pre))
-    			{
-    				return false;
-    			}
-    		return true;
-    	}
-    	else
-    		return true;
+        if(!root)
+            return true;
+        if(!isVaildBST(pre,root->left))
+            return false;
+        if(pre!=NULL)
+        {
+            if(pre->val>=root->val)
+                return false;
+        }
+        pre = root;
+        return isVaildBST(pre,root->right);
     }
-    
 };
 
 //another solution
