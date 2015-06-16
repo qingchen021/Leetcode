@@ -16,6 +16,8 @@ It can have between 1 and 2h nodes inclusive at the last level h.
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
+ 
+ //Divide and conquer
 class Solution {
 public:
     int countNodes(TreeNode* root) {
