@@ -10,55 +10,23 @@ Return "100".
 class Solution {
 public:
 	string addBinary(string a, string b) {
-		int len1 = a.length();
-		int len2 = b.length();
-		int carry = 0;
-		string ret = "";
-		while (len1 && len2)
+		if (a.length()<b.length())
+			swap(a, b);
+		int i = a.length() - 1, j = b.length() - 1;
+		while (i >= 0)
 		{
-			int cur = a[len1 - 1] - '0' + b[len2-1] - '0';
-			cur += carry;
-			if (cur > 1)
+			if (j >= 0)
+				a[i] += b[j--] - '0';
+			if (a[i] >= '2')
 			{
-				carry = 1;
-				cur -= 2;
+				a[i] = a[i] - 2;
+				if (i == 0)
+					a = '1' + a;
+				else
+					++a[i - 1];
 			}
-			else
-				carry = 0;
-			ret.insert(0, 1, cur + '0');
-			len1--;
-			len2--;
+			--i;
 		}
-		while (len1)
-		{
-			int cur = a[len1-1] - '0';
-			cur += carry;
-			if (cur > 1)
-			{
-				carry = 1;
-				cur -= 2;
-			}
-			else
-				carry = 0;
-			ret.insert(0, 1, cur + '0');
-			len1--;
-		}
-		while (len2)
-		{
-			int cur = b[len2 - 1] - '0';
-			cur += carry;
-			if (cur > 1)
-			{
-				carry = 1;
-				cur -= 2;
-			}
-			else
-				carry = 0;
-			ret.insert(0, 1, cur + '0');
-			len2--;
-		}
-		if (carry > 0)
-			ret.insert(0, 1, 1 + '0');
-		return ret;
+		return a;
 	}
 };
