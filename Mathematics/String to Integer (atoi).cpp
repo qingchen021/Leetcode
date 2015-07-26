@@ -20,42 +20,39 @@ If no valid conversion could be performed, a zero value is returned. If the corr
 
 class Solution {
 public:
-	int atoi(const char *str)
-	{
-		if (str == NULL)
+	int myAtoi(string str) {
+		if (str.size() == 0)
 			return 0;
-		long i = 0;
-		int p = 1;
-		while (str[i] == ' ')
-			i++;
-		if (str[i] == '-')
+		int cur = 0;
+		int flag = 1;
+		int start = 0;
+		while (str[cur] == ' ')
+			cur++;
+		if (str[cur] == '-')
 		{
-			p = -1;
-			i += 1;
+			flag = -1;
+			cur++;
 		}
-		if (str[i] == '+')
+		else if (str[cur] == '+')
 		{
-			p = 1;
-			i += 1;
+			cur++;
 		}
-
 		long long num = 0;
-
-		for (; *(str + i) != '\0'; i++)
+		for (; cur < str.length(); cur++)
 		{
-			if (str[i] < '0' || str[i] >'9')
+			int c = str[cur] - '0';
+			if (c < 0 || c >9)
 				break;
 			num *= 10;
-			num += str[i] - '0';
-			if (num > INT_MAX)
-			{
-				if (p == 1)
-					return INT_MAX;
-				if (p == -1)
-					return INT_MIN;
-			}
+			num += c;
+			if (num *flag > INT_MAX || num *flag < INT_MIN)
+				break;
 		}
-
-		return num * p;
+		num *= flag;
+		if (num > INT_MAX)
+			return INT_MAX;
+		if (num < INT_MIN)
+			return INT_MIN;
+		return num;
 	}
 };
