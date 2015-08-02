@@ -15,32 +15,36 @@ If there are multiple such windows, you are guaranteed that there will always be
 
 class Solution {
 public:
-	string minWindow(string S, string T) {
-		int hashS[1 << 8] = { 0 };
-		int hashT[1 << 8] = { 0 };
-		int total = 0;
-		for (int i = 0; i < T.size(); i++)
+	string minWindow(string s, string t) {
+		int hashT[256] = { 0 };
+		int hashS[256] = { 0 };
+		for (int i = 0; i<t.size(); i++)
+			hashT[t[i]]++;
+		int start = -1, end = -1, count = 0;
+		string ret;
+		for (int i = 0; i<s.length(); i++)
 		{
-			++total;
-			++hashT[T[i]];
-		}
-		int start = -1, head = 0, length = INT_MAX;
-		for (int i = 0; i < S.size(); i++)
-		{
-			hashS[S[i]]++;
-			if (hashT[S[i]] != 0 && hashS[S[i]] <= hashT[S[i]])
-				total--;
-			while (head <= i && hashS[S[head]]>hashT[S[head]])
+			hashS[s[i]]++;
+			if (hashS[s[i]] <= hashT[s[i]])
 			{
-				hashS[S[head]]--;
-				head++;
+				count++;
 			}
-			if (total == 0 && i - head + 1< length)
+			if (count == t.size())
 			{
-				start = head;
-				length = i - head + 1;
+				if (start == -1)
+				{
+					start = 0;
+					end = i;
+					ret = s.substr(start, end - start + 1);
+				}
+				while (hashS[s[start]] > hashT[s[start]])
+				{
+					hashS[s[start]]--;
+					if (end - start < ret.size())
+						ret = s.substr(start, end - start + 1);
+				}
 			}
 		}
-		return start == -1 ? "" : S.substr(start, length);
+		return ret;
 	}
 };
